@@ -1,0 +1,471 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.divArbolPrincipal{
+    background-color: rgb(166, 196, 141);
+    border-radius: 12px;
+    min-height: 300px;
+    padding: 1px;
+    margin: 1px;
+    margin-top: 2px;
+    margin-bottom: 5px;  
+    width: 95%;
+    }
+
+#divEspacios{
+
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}
+
+.panelEspacioGeneral{
+    background:
+    linear-gradient(
+      rgba(156, 255, 131, 0.7),
+      rgba(204, 235, 196, 0.7)
+    );
+    border-radius: 12px;
+    padding: 2px;
+    margin: 1px;
+    
+    width: 95%;
+    max-height: 50px;
+    overflow: hidden;
+    transition: all .5s ease;
+    }
+
+    .panelEspacioGeneralActivo{
+    
+    background:
+    linear-gradient(
+      rgba(156, 255, 131, 0.7),
+      rgba(204, 235, 196, 0.7)
+    );
+      border-radius: 12px;
+      min-height: 100px;
+      padding: 2px;
+      margin: 1px;
+      width: 95%;
+      transition: all .5s ease;
+      }
+
+  .panelEspacioGeneralSub2{
+    background:
+    linear-gradient(
+      rgba(226, 252, 182, 0.87),
+      rgb(243, 248, 232)
+    );
+    border-radius: 12px;
+    min-height: 100px;
+    padding: 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 8px;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: auto 25%;
+
+    }
+
+    .btnAddTrastoS2{
+      
+     /* grid-column-start: 2;
+      grid-column-end: 3;*/
+      grid-row-start: span 2;
+      display: flex;
+      flex-direction: column;
+      align-items:end;
+    }
+
+    .btnAddTrastoS2 button{
+      height: 80%;
+      width: 85%;
+      
+      
+    }
+
+    .cabecerLugarS2{
+      font-weight: bolder;
+      font-size:large;
+      text-align: left;
+    }
+
+    .tituloLugarS2{
+      width: 100%;
+      height: 35px;
+      display: grid;
+      grid-template-columns: 10fr 1fr 1fr;
+      justify-items: left;
+    }
+  
+
+    .divPanelSearch{
+      background:
+      linear-gradient(
+        rgba(160, 175, 218, 0.89),
+        rgb(177, 221, 238)
+      );
+      border-radius: 12px;
+      width: 95%;
+      margin: 2px;
+      padding: 10px
+      }
+
+button{
+
+  margin: 5px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  
+}
+
+.btn-danger{
+  max-height: 30px;
+  max-width: 29px;
+}
+
+.btn-secondary{
+  max-height: 30px;
+  max-width: 29px;
+}
+
+p{
+  margin: 1px;
+  padding: 1px;  
+}
+
+  [nameCSS=divSuperior]{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2px;
+    
+  }
+  [nameCSS=divInferior]{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  .cabecerLugar{
+    font-weight: bolder;
+    font-size:large;
+    margin: 1px;
+    margin-bottom: 8px;
+    text-align: left;
+    grid-column-start: span 2;
+
+    display: grid;
+    grid-template-columns: 11fr 1fr 1fr;
+    justify-items: left;
+    max-width: 550px;
+  }
+
+ 
+  .divLugarS2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+ 
+  [nameCSS=pbtnADD]{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items:flex-end;
+  }
+
+  [nameCSS=pbtnADD] button{
+    max-width: 80%;
+    width: 100%;
+    
+  }
+  
+  
+  [nameCSS=divTrastos] p{
+    
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 250px;
+
+    margin: 1px;
+    padding: 1px;
+
+  }
+
+  [nameCSS=divTrastosS2]{
+    
+    font-weight: normal;
+    font-size: medium;
+    
+  }
+
+  [nameCSS=divTrastosS2] div{
+    width: 100%;
+    max-width: 250px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between
+  }
+
+
+
+  [nameCSS=divTrastosS2].btn-danger{
+    max-height: 30px;
+    max-width: 29px;
+  }
+
+  
+
+    .barraSearch {
+      height: 30px; 
+      max-width: 600px;
+    }
+
+    .barraSearch input{
+      background-color: rgba(227, 231, 243, 0.89);
+      height: 100%;
+      max-width: 100%;
+      
+    }
+
+    .resultadoSearch{
+      margin: 5px;
+      margin-left: 20px;
+      height: 30px;
+      max-width: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .resultadoSearch p{
+      font-family: 'Times New Roman', Times, serif;
+      font-size: medium;
+      font-weight: bolder;
+    }
+
+  .divElementosHijos{
+    grid-area: n5;
+    background-color: rgba(230, 204, 136, 0.89);
+    border-radius: 12px;
+    margin: 2px;
+    padding: 5px;
+    width: 95%;
+    text-align: left;
+    
+  }
+
+
+.parrafoEspacio{
+    background-color: rgba(224, 238, 212, 0.89);
+    border-radius: 12px;
+    padding-left: 4px;
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+   
+    }
+
+  
+  .divSup{
+    background-color: rgba(224, 238, 212, 0.89);
+    border-radius: 12px;
+    padding-left: 2px;
+    margin: 1px;
+
+  }
+
+  .guardado{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+  }
+
+  .divHijoClass{
+    padding: 5px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .parrafoHijoClass{
+
+    background-color: rgba(160, 175, 218, 0.89);
+    border-radius: 12px;
+    padding: 1px;
+    margin: 4px;
+
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4,1fr);
+    grid-template-areas: 
+    "n1 n2 n33 n33"
+    "n44 n5 n5 n5"
+    "n44 n5 n5 n5"
+    "n44 n5 n5 n5";
+    
+  }
+
+  .parrafoHijoClass p{
+    grid-area: n33;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin:2px;
+    height: 30px
+
+  }
+
+  .inputData{
+    padding: 0px;
+
+  }
+
+  .inputTituloData{
+    background-color:  rgb(255, 228, 192);
+    border-radius: 8px;
+    padding: 5px;
+    padding-top: 0px;
+    max-width: 300px;
+
+  }
+
+    .error{
+      background-color: rgba(221, 106, 106, 0.89);
+      border-radius: 12px;
+      padding: 15px;
+      margin: 5px;
+      }
+
+    .pbtnAddElement{
+      grid-area: n4;
+      margin-left: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btnBorrar{
+      grid-area: n1;
+      background-color: red;
+      font-weight: bolder;
+      color: white;
+      border-radius: 8px;
+      height: 100%;
+      border-color: rgb(247, 145, 145);
+      max-width: 80px;
+      max-height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 10px;
+    }
+
+    .botones{
+      grid-area: n44;
+      background-color: #bef3c5;
+      border-radius: 2px;
+      border-color: #bef3c5;
+      max-height: 30px;
+      display: flex;
+      flex-direction: row;
+      justify-items: center;
+      align-items: center;
+      margin:2px
+    }
+
+    .botones svg{
+      margin: 1px;
+      max-height: 22px;
+      max-width: 22px;
+    }
+
+    .btnCloseChico{
+      background-color: rgba(226, 9, 9, 0.89);
+      border-bottom: #000;
+      border-radius: 12px;
+      margin: 2px;
+    }
+
+    .pBtnCloseChico{
+      margin: 2px;
+      
+    }
+
+    .ulClass{
+      margin: 2px;
+      padding: 4px;
+      padding-left: 15px;
+      
+    }
+
+  
+      .ulHijoClass {
+        margin: 1px;
+        padding-left: 10px;
+        padding-right: 10px;
+        max-width: 180px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content:space-between
+      }
+
+    .ulHijoClass button {
+      margin: 1px;
+      padding-left: 10px;
+      
+    }
+
+    .btnEditarEspacio svg{
+      
+      max-height: 20px;
+      max-width: 20px;
+    }
+
+    .btnEditarEspacio{
+      grid-area: n2;
+      background-color:rgba(171, 238, 168, 0.801) ;
+      border-radius: 10px;
+      height: 100%;
+      max-height: 30px;
+      max-width: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #btnNuevoLugar{
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: bolder;
+      font-size: medium;
+      background-color: rgba(171, 238, 168, 0.801);
+      border-radius: 8px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    #divBtnNuevoLugar{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding: 10px
+    }
