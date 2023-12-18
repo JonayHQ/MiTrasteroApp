@@ -1,6 +1,8 @@
 
 //!Esto es la logica de validacion de Google Sign in
 
+localStorage.removeItem("panelActivo")
+
 const miFormulario = document.querySelector('form')
 
 miFormulario.addEventListener('submit', event=>{
