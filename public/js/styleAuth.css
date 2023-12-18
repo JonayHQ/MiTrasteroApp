@@ -1,0 +1,21 @@
+body{
+    background:
+    linear-gradient(
+      rgba(104, 207, 238, 0.904),
+      rgba(255, 255, 255, 0.822)
+    );
+}
+
+#portada{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2px;
+}
+
+#portada img{
+    border-radius: 50%;
+    background-color: black;
+    padding: 2px;
+}
+

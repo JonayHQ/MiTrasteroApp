@@ -11,7 +11,7 @@ const crearTrasto = async (req, res = response)=>{
 
    // console.log(req.body, "ln16")
 
-    const nombre = req.body.nombre.toUpperCase()
+    const nombre = req.body.nombre.toLowerCase() 
   //  console.log(nombre)
     
     //*Generar la informacion a guardar

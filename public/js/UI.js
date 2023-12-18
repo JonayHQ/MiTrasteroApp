@@ -172,9 +172,10 @@ class UI {
             }
           });
         }
-        const pbtnAdd = document.createElement('DIV')
+       const pbtnAdd = document.createElement('DIV')
         pbtnAdd.setAttribute('nameCSS', 'pbtnADD')
         //?BOTON AÑADIR TRASTO
+         /*
           const btnAddTrasto = document.createElement('button')
           btnAddTrasto.textContent = "+ Obj"
           btnAddTrasto.setAttribute('id', `${_id}`)
@@ -182,7 +183,7 @@ class UI {
           btnAddTrasto.setAttribute('name', `boton`)
           btnAddTrasto.setAttribute('name1', `${nombreLugar}`)
      
-          pbtnAdd.appendChild(btnAddTrasto)
+          pbtnAdd.appendChild(btnAddTrasto)*/
         //?BOTON AÑADIR LUGARs2
         
         const btnAddLugarS2 = document.createElement('button')
@@ -217,7 +218,7 @@ class UI {
             divSup.appendChild(parrafoNombre)
             //divSup.appendChild(btnAddTrasto)
             divSup.appendChild(divNombresTrastos)
-            divSup.appendChild(pbtnAdd)
+             divSup.appendChild(pbtnAdd)
             divInf.appendChild(divNombresLugaresS2)
             parrafo.appendChild(divSup)
             parrafo.appendChild(divInf)
@@ -278,7 +279,7 @@ return  respuesta
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("x-token", localStorage.getItem('token'));
-            
+          
         let myInitGet = { method: 'GET',
         headers: myHeaders,
         mode: 'cors',
