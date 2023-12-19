@@ -1,9 +1,5 @@
 body {
-  background:
-  linear-gradient(
-    rgba(221, 208, 208, 0.479),
-    rgba(255, 255, 255, 0.788)
-  );
+  background-color: rgb(245 255 250);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,12 +15,13 @@ body {
   
   background:
   linear-gradient(
-    rgba(161, 187, 194, 0.795),
-    rgb(243, 247, 245)
+    145deg,
+    lightgrey 80%,
+    white
   );
   
     border-radius: 12px;
-    min-height: 300px;
+    min-height: 200px;
     padding: 1px;
     margin: 1px;
     margin-top: 2px;
@@ -43,10 +40,12 @@ align-items: center;
 .panelEspacioGeneral{
   background:
       linear-gradient(
-        rgba(160, 175, 218, 0.89),
-        rgb(177, 221, 238)
+        90deg,
+        rgba(0, 0, 0, 0.438) 20%,
+        lightgrey
+        /*rgba(99, 109, 255, 0.87) 5%,*/
       );
-    
+    color: white;
     border-radius: 12px;
     padding: 2px;
     margin: 1px;
@@ -56,6 +55,8 @@ align-items: center;
     overflow: hidden;
     transition: all .5s ease;
     }
+
+    
 
     .panelEspacioGeneralActivo{
     
@@ -76,8 +77,9 @@ align-items: center;
   .panelEspacioGeneralSub2{
     background:
     linear-gradient(
-      rgb(240 255 240),
-      rgb(240 255 240)
+      45deg,
+      lightgrey 5%,
+      white
       );
     border-radius: 12px;
     min-height: 100px;
@@ -126,10 +128,11 @@ align-items: center;
 
     .divPanelSearch{
       background:
-      linear-gradient(
-        rgba(160, 175, 218, 0.89),
-        rgb(177, 221, 238)
-      );
+  linear-gradient(
+    45deg,
+    lightgrey 90%,
+    white
+  );
       border-radius: 12px;
       width: 95%;
       margin: 2px;
@@ -472,14 +475,20 @@ p{
       font-family: 'Times New Roman', Times, serif;
       font-weight: bolder;
       font-size: medium;
+      color: white;
       background:
       linear-gradient(
-        rgba(160, 175, 218, 0.89),
-        rgb(177, 221, 238)
+        45deg,
+        grey 75%,
+        lightgrey
       );
       border-radius: 8px;
       padding: 10px;
       width: 100%;
+    }
+
+    #btnNuevoLugar:hover{
+      background:rgba(0, 0, 0, 0.637)
     }
 
     #divBtnNuevoLugar{

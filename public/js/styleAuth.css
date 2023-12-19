@@ -1,9 +1,5 @@
 body{
-    background:
-    linear-gradient(
-      rgba(104, 207, 238, 0.904),
-      rgba(255, 255, 255, 0.822)
-    );
+    background-color: rgba(119, 136, 153, 0.719);
 }
 
 #portada{
