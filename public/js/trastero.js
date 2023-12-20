@@ -5,7 +5,7 @@ const ui = new UI()
 const divArbolPrincipalH = document.querySelector('#divArbolPrincipal')
 const divLugarNuevoH = document.querySelector('#divLugarNuevo')
 const divElementoNuevoH = document.querySelector('#divElementoNuevo')
-const divResultadoSearchH = document.querySelector('#divResultadoSearch')
+const divResultadoSearch = document.querySelector('#divResultadoSearch')
 const inputSearch = document.querySelector('#inputSearch')
 
 const inputNombreLugar = document.querySelector('#inputNombreLugar')
@@ -18,6 +18,7 @@ const btnSalir= document.querySelector('#btnSalir')
 const btnNuevoLugar = document.querySelector('#btnNuevoLugar')
 
 const divEspacios = document.querySelector('#divEspacios')
+const listaTrastos = document.querySelector('#listaTrastos')
 
 
 
@@ -25,38 +26,66 @@ let usuario = null
 let socket = null
 let arregloLugares = []
 
+
+//?PETICION A BASE DE DATOS SOBRE INFO DE TRASTOS Y ESPACIOS
 const init = async () => {
     //!AQUI METER UN PROMISE ALL, para ir mas rapido
     const arregloLugares =  await ui.obtenerEspacios()
     const arregloTrastos =  await ui.obtenerTrastos()
 
 
-let cargarBuscador = ui.cargarBuscador(arregloTrastos)
-//? PANEL DE BUSCAR TRASTO
+
+//?CREAR MODAL DEL BUSCADOR
+const btnOpenModal = document.querySelector("[data-open-modal]")
+const btnCloseModal = document.querySelector("[data-close-modal]")
+const modal = document.querySelector("[data-modal]")
+    
+btnOpenModal.addEventListener('click', ()=>{
+inputSearch.value=""
+divResultadoSearch.innerHTML=""
+  modal.showModal()
+  ui.cargarBuscador(arregloTrastos, arregloLugares)
+    })
+ btnCloseModal.addEventListener('click', ()=>{
+  modal.close()
+    })
+
+ //? PANEL DE BUSCAR TRASTO
+let cargarBuscador = ui.cargarBuscador(arregloTrastos, arregloLugares)
+
 let objetoBuscado = {nombre: "", id: ""}
 let lugardelObjetoBuscado = ""
 
 inputSearch.addEventListener('input', (e)=>{
+    listaTrastos.innerHTML= ""
     arregloTrastos.forEach(trasto => {
         const { _id, nombreTrasto} = trasto
-        if(e.target.value === _id){
-            inputSearch.value = nombreTrasto
-            objetoBuscado.nombre = nombreTrasto
-            objetoBuscado.id =_id
-        }
+
+       if( nombreTrasto.includes(inputSearch.value)){
+        console.log(nombreTrasto)
+        listaTrastos.innerHTML+= `<p class=parrafoListaTrastos>${nombreTrasto}<span id="${_id}" hidden>${_id}</span></p>`
+       }
+       
+    })
+    //HACE SELECCIONABLE LOS TRASTOS FILTRADOS
+        const p = document.querySelectorAll('.parrafoListaTrastos')
+        p.forEach(parrafo => {
+            parrafo.addEventListener('click', e=>{
+                objetoBuscado = {nombre: e.target.outerText, id: e.target.firstElementChild.innerText}
+                arregloLugares.forEach(lugar => { 
+                    const {objetosQueGuarda} = lugar
+                    objetosQueGuarda.forEach(trastoGuardado => {
+                            if(trastoGuardado===objetoBuscado.id){
+                                lugardelObjetoBuscado = lugar.nombreLugar
+                            }
+                        });
+                });
+                divResultadoSearch.innerHTML = `El trasto <span style="font-weight:bolder">${objetoBuscado.nombre}</span> se encuentra en ${lugardelObjetoBuscado}`
+        });
+        
 
     });
 
-    arregloLugares.forEach(lugar => { 
-        const {objetosQueGuarda} = lugar
-        objetosQueGuarda.forEach(trastoGuardado => {
-                if(trastoGuardado===objetoBuscado.id){
-                    lugardelObjetoBuscado = lugar.nombreLugar
-                }
-            });
-    });
-    
-divResultadoSearchH.innerHTML = `El trasto ${objetoBuscado.nombre} se encuentra en ${lugardelObjetoBuscado}`
 })
 
 

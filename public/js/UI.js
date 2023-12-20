@@ -453,21 +453,48 @@ return  respuesta
     
   }
 
- cargarBuscador(arregloTrastos){
+ cargarBuscador(arregloTrastos,arregloLugares){
 
-  listaElementos.innerHTML = ""
+  listaTrastos.innerHTML = ""
     
     arregloTrastos.forEach(trasto => {
     const {_id, nombreTrasto} = trasto
-    console.log(nombreTrasto)
-    
+    /*
     let option = document.createElement('OPTION')
     option.setAttribute('value', _id)
     option.innerText = nombreTrasto
-    listaElementos.appendChild(option)
-    });
+    listaTrastos.appendChild(option)
+   */
+    listaTrastos.innerHTML += `<p class=parrafoListaTrastos>${nombreTrasto}<span id="${_id}" hidden>${_id}</span></p>`
+ 
+  });
+
+  let objetoBuscado = {nombre: "", id: ""}
+  let lugardelObjetoBuscado = ""
+  const p = document.querySelectorAll('.parrafoListaTrastos')
+  p.forEach(parrafo => {
+      parrafo.addEventListener('click', e=>{
+          objetoBuscado = {nombre: e.target.outerText, id: e.target.firstElementChild.innerText}
+          arregloLugares.forEach(lugar => { 
+              const {objetosQueGuarda} = lugar
+              objetosQueGuarda.forEach(trastoGuardado => {
+                      if(trastoGuardado===objetoBuscado.id){
+                          lugardelObjetoBuscado = lugar.nombreLugar
+                      }
+                  });
+          });
+          divResultadoSearch.innerHTML = `El trasto <span style="font-weight:bolder">${objetoBuscado.nombre}</span> se encuentra en ${lugardelObjetoBuscado}`
+          divResultadoSearch.innerHTML += `<a id="btnIr" class="btnIr">Ir al lugar</a>`
+         
+  }); 
+  
+
+});
+   
     
   }
-}
 
+
+
+}
 

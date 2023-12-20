@@ -2,17 +2,14 @@ body {
   background-color: rgba(128, 128, 128, 0.089);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  
+  align-items: center;  
 }
 
 .container{
   max-width: 600px;
 }
 
-
 .divArbolPrincipal{
-  
   background:
   linear-gradient(
     145deg,
@@ -94,6 +91,59 @@ align-items: center;
     transition: all .5s ease;
     }
 
+    .mod{
+      min-height: 200px;
+      border-radius: 12px;
+      border: 0px;
+    }
+    .mod button{
+      margin: 5px
+    }
+
+    .mod::backdrop{
+      background: grey;
+      opacity: 0.6;
+    }
+
+    #btnIr{
+      height: 30px;
+      width: 100%;
+      margin: 2px;
+      border-radius: 4px;
+      background-color: #000000a6;
+      color: white;
+      font-weight: bolder;
+      text-align: center;
+      box-shadow: 3px 3px 5px;
+    }
+
+    #btnIr:active{
+      background-color: #000000;
+    }
+
+    .listaTrastos{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .parrafoListaTrastos{
+      background:
+    linear-gradient(
+      45deg,
+      rgba(128, 128, 128, 0.322) 5%,
+      lightgrey
+      );
+      box-shadow: 2px 2px 5px;
+      border-radius: 4px;
+      width: 100%;
+      margin: 3px;
+    }
+
+    .parrafoListaTrastos:active{
+      background-color: gray;
+    }
+
+   
     .btnAddTrastoS2{
       
      /* grid-column-start: 2;
@@ -128,16 +178,30 @@ align-items: center;
 
     .divPanelSearch{
       background:
-  linear-gradient(
-    45deg,
+      linear-gradient(
+     45deg,
     lightgrey 90%,
     white
   );
       border-radius: 12px;
       width: 95%;
       margin: 2px;
-      padding: 10px
+      padding: 10px;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       }
+
+      .divPanelSearch button{
+        font-family: 'Times New Roman', Times, serif;
+        border-radius: 4px;
+        min-width: 150px;
+        background-color: whitesmoke;
+        padding: 3px;
+      }
+
+
 
 button{
 
@@ -267,9 +331,8 @@ p{
     .resultadoSearch{
       margin: 5px;
       margin-left: 20px;
-      height: 30px;
-      max-width: 600px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
     }
@@ -277,7 +340,9 @@ p{
       font-family: 'Times New Roman', Times, serif;
       font-size: medium;
       font-weight: bolder;
+      
     }
+
 
   .divElementosHijos{
     grid-area: n5;
