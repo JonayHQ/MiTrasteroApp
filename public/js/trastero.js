@@ -29,6 +29,9 @@ let arregloLugares = []
 
 //?PETICION A BASE DE DATOS SOBRE INFO DE TRASTOS Y ESPACIOS
 const init = async () => {
+
+    validarJWT()
+
     //!AQUI METER UN PROMISE ALL, para ir mas rapido
     const arregloLugares =  await ui.obtenerEspacios()
     const arregloTrastos =  await ui.obtenerTrastos()
@@ -283,6 +286,7 @@ const token = localStorage.getItem('token') || ""
 
 if(token.length < 10){
     window.location = "index.html"
+    console.log("TOKEN VACIO")
     throw new Error("El token no es valido")
 
 }
