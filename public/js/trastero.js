@@ -32,7 +32,7 @@ const init = async () => {
     //!AQUI METER UN PROMISE ALL, para ir mas rapido
     const arregloLugares =  await ui.obtenerEspacios()
     const arregloTrastos =  await ui.obtenerTrastos()
-
+console.log(arregloTrastos)
 
 
 //?CREAR MODAL DEL BUSCADOR
@@ -61,13 +61,13 @@ inputSearch.addEventListener('input', (e)=>{
     arregloTrastos.forEach(trasto => {
         const { _id, nombreTrasto} = trasto
 
-       if( nombreTrasto.includes(inputSearch.value)){
+       if( nombreTrasto.includes((inputSearch.value.toLowerCase()))){
         console.log(nombreTrasto)
         listaTrastos.innerHTML+= `<p class=parrafoListaTrastos>${nombreTrasto}<span id="${_id}" hidden>${_id}</span></p>`
        }
        
     })
-    //HACE SELECCIONABLE LOS TRASTOS FILTRADOS
+    //?HACE SELECCIONABLE LOS TRASTOS FILTRADOS
         const p = document.querySelectorAll('.parrafoListaTrastos')
         p.forEach(parrafo => {
             parrafo.addEventListener('click', e=>{
@@ -144,7 +144,6 @@ panelesCabecera.forEach(espacioCabecera => {
             }
 
             let mensajeConfirmacion = await ui.guardarDBtrasto(trastoObj)
-                console.log(mensajeConfirmacion)
                 init()
         })
 
@@ -185,7 +184,7 @@ panelesCabecera.forEach(espacioCabecera => {
             }
 
             let mensajeConfirmacion = await ui.guardarDBtrasto(trastoObj)
-            alert(mensajeConfirmacion.el_backend_dice_esto[0])
+           // alert(mensajeConfirmacion.el_backend_dice_esto[0])
             init()
         })
 
@@ -196,14 +195,14 @@ panelesCabecera.forEach(espacioCabecera => {
         btn.addEventListener('click', async (e)=>{
             
             let confirmacionDelete = confirm(`Seguro que desea borrar`);
-            if(!confirmacionDelete){ return}
+            if(!confirmacionDelete){return}
             console.log(e.target.id)
             let idTrasto = {
                 id: e.target.id
             }
             //Peticion a BD y borrar
             let mensajeConfirmacion = await ui.borrarDBtrasto(idTrasto)
-            alert(mensajeConfirmacion.el_backend_dice_esto[0])
+          //  alert(mensajeConfirmacion.el_backend_dice_esto[0])
             init()
         })
 
@@ -236,8 +235,12 @@ btnEditarLugar.forEach(btn => {
         btn.addEventListener('click', async (e)=>{
             
             let editarLugar = prompt(`Nuevo nombre`);
-            if(editarLugar.length === 0){return}
-            console.log(e.target.id)
+            if(!editarLugar){init()
+                return}
+            if(editarLugar.length === 0){
+                init()
+                return}
+
             let newDataLugar= {
                 nombreLugar: editarLugar,
                 id: e.target.id
@@ -245,7 +248,7 @@ btnEditarLugar.forEach(btn => {
             
             //Peticion a BD y borrar
             let mensajeConfirmacion = await ui.editarLugar(newDataLugar)
-            alert(mensajeConfirmacion.el_backend_dice_esto[0])
+            //alert(mensajeConfirmacion.el_backend_dice_esto[0])
             init()
         })
 

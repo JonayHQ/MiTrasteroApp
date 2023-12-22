@@ -56,9 +56,9 @@ const obtenerTrastos = async (req, res=response)=>{
 }
 
 const eliminarTrasto = async (req, res=response)=>{
-//console.log(req.body)
+
 const idParaEliminar = req.body.id
-const trastoElminado = await ModelTrasto.findByIdAndUpdate(req.body.id, {estado: false})
+
 //borrar el trasto del arreglo del lugar.
     //pedir la coleccion de lugar los trastos que guarda
     const query = {estado:true}
@@ -67,26 +67,17 @@ console.log(lugarArr)
 lugarArr.forEach(lugar => {
     lugar.objetosQueGuarda.forEach( async trastoID => {
         if(trastoID===idParaEliminar){
-            console.log(trastoID, "trasto que quiero borrar encontrado")
-            console.log(lugar.id, "id del lugar que guarda el trasto")
-            
-            console.log(lugar.objetosQueGuarda, "arreglo objetos que guarda")
-
             const objetosQueGuardaActualizado = lugar.objetosQueGuarda.filter(idTrasto =>idTrasto!==idParaEliminar)
-
             let objetosQueGuardaActualizadoOBJ = {objetosQueGuarda:objetosQueGuardaActualizado}
-            console.log(objetosQueGuardaActualizado, "actualizado")
-
             await ModelLugar.findByIdAndUpdate(lugar.id, objetosQueGuardaActualizadoOBJ)
             
-           
         }
     });
     
 });
 
 //Eliminar el trasto de la coleccion de trastos
-await ModelTrasto.findByIdAndUpdate(idParaEliminar, {estado:false}, {new:true} )
+await ModelTrasto.findByIdAndDelete(idParaEliminar)
     res.json({msg:`El trasto ha sido borrado`})
    
     }

@@ -56,10 +56,25 @@ const obtenerLugares = async (req, res=response)=>{
         
         
         }
-
+        //! MODIFICAR PARA QUE SE BORRE EL CONTENIDO
 const eliminarLugar = async (req, res=response)=>{
-    const lugarElminado = await ModelLugar.findByIdAndUpdate(req.body.id, {estado: false}, {new:true})
-    res.json({msg:`El trasto ha sido borrado`})
+    //borrar todos los trastos guardados del lugar.
+    //pedir la coleccion de lugar los trastos que guarda
+    const lugarArr =  await ModelLugar.find({estado:true}) 
+     
+lugarArr.forEach(lugar => {
+    //?VACIA DE OBJETOS LOS SUBLUGARES
+    if(req.body.id===lugar.lugarDondeEsta){
+        lugar.objetosQueGuarda.forEach( async trastoID => {
+            let arrayTrastosVacio = ["vacio"]
+                await ModelLugar.findByIdAndUpdate(lugar.id, {objetosQueGuarda:arrayTrastosVacio})
+                //?ELimina el sublugar
+                await ModelLugar.findByIdAndDelete(lugar.id)
+            })
+    }
+})
+    const lugarElminado = await ModelLugar.findByIdAndDelete(req.body.id)
+    res.json({msg:`El lugar ha sido borrado`})
     }
 
 const editarLugar = async (req, res=response)=>{
@@ -76,47 +91,5 @@ const editarLugar = async (req, res=response)=>{
     res.json({msg:`El nombre ha sido modificado`})
     }
 
-const obtenerUnProducto = async (req, res=response)=>{
 
-    const {id} = req.params
-    
-    const producto = await ModelProducto.findById(id)
-        .populate('Usuario','nombre')
-    
-        res.json(producto)
-    
-    }
-
-const actualizarProducto = async (req, res=response)=>{
-
-    const {id} = req.params
-    const {estado, usuario, ...data} = req.body
-    const query = {estado:true}
-    
-    data.nombre = data.nombre.toUpperCase()
-    data.usuario = req.usuario._id;
-    
-  
-
-    const [producto, categoria] = await Promise.all([
-        ModelProducto.findByIdAndUpdate(id, data, {new: true}),
-        ModelProducto.find(query)
-            .populate('categoria','nombre')
-        ]
-    )
-    
-    res.json({producto,categoria})
-    
-    }
-
-
-const borrarProducto = async (req, res=response)=>{
-
-    const {id} = req.params
-    
-    const productoBorrado = await ModelProducto.findByIdAndUpdate(id, {estado:false}, {new:true} )
-    
-    res.json(`El producto ${productoBorrado.nombre} ha sido borrado`)
-
-    }
     

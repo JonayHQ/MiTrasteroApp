@@ -144,7 +144,7 @@ class UI {
                 btnEditarLugarS2.textContent = "Editar"
                 btnEditarLugarS2.setAttribute('id', `${lugarS2._id}`)
                 btnEditarLugarS2.classList.add('btn', 'btn-secondary', 'btn-sm')
-                btnEditarLugarS2.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                btnEditarLugarS2.innerHTML = `<svg id="${lugarS2._id}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                 <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                 </svg>`
                 btnEditarLugarS2.setAttribute('name', `btnEditarLugar`)
@@ -207,7 +207,7 @@ class UI {
         btnEditarLugar.textContent = "Editar"
         btnEditarLugar.setAttribute('id', `${lugar._id}`)
         btnEditarLugar.classList.add('btn', 'btn-secondary', 'btn-sm')
-        btnEditarLugar.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+        btnEditarLugar.innerHTML = `<svg id="${lugar._id}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
         </svg>`
         btnEditarLugar.setAttribute('name', `btnEditarLugar`)
@@ -459,12 +459,7 @@ return  respuesta
     
     arregloTrastos.forEach(trasto => {
     const {_id, nombreTrasto} = trasto
-    /*
-    let option = document.createElement('OPTION')
-    option.setAttribute('value', _id)
-    option.innerText = nombreTrasto
-    listaTrastos.appendChild(option)
-   */
+  
     listaTrastos.innerHTML += `<p class=parrafoListaTrastos>${nombreTrasto}<span id="${_id}" hidden>${_id}</span></p>`
  
   });
@@ -493,7 +488,6 @@ return  respuesta
    
     
   }
-
 
 
 }
