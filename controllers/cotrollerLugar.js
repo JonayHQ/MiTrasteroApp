@@ -7,7 +7,7 @@ import { UI } from "../models/0UI.js"
 import { ModelTrasto } from "../models/0trasto.js"
 
 export{crearLugar, obtenerLugares,eliminarLugar, editarLugar}
-
+ 
 //algo
 const crearLugar = async (req, res = response)=>{
 

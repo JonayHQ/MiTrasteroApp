@@ -7,6 +7,7 @@ import { ModelLugar } from "../models/0lugar.js"
 export{crearTrasto, obtenerTrastos, eliminarTrasto}
 
 
+
 const crearTrasto = async (req, res = response)=>{
 
    // console.log(req.body, "ln16")
