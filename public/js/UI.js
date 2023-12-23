@@ -491,7 +491,6 @@ return  respuesta
             }     
           });
 
-
           divResultadoSearch.innerHTML = `El trasto <span style="font-weight:bolder">${objetoBuscado.nombre}</span> se encuentra en ${lugardelObjetoBuscado} en ${nombreLugarPadre}`
           divResultadoSearch.innerHTML += `<a id="btnIr" class="btnIr">Ir al lugar</a>`
          
