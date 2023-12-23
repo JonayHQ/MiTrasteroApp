@@ -2,7 +2,6 @@ import {Schema, model} from 'mongoose'
 
 export {ModelTrasto}
 
-
 const TrastoSchema = Schema({
     nombreTrasto: {
         type: String,
