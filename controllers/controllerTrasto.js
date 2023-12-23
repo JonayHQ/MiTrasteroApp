@@ -1,7 +1,7 @@
 import { response } from "express"
 
 import { body } from "express-validator"
-import { ModelTrasto } from "../models/0Trasto.js"
+import { ModelTrasto } from "../models/0trasto.js"
 import { ModelLugar } from "../models/0lugar.js"
 
 export{crearTrasto, obtenerTrastos, eliminarTrasto}

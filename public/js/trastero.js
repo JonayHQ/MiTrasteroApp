@@ -1,5 +1,7 @@
 import {UI} from '../js/UI.js'
 
+import {validarJWT} from './helpers.js'
+
 const ui = new UI()
 
 const divArbolPrincipalH = document.querySelector('#divArbolPrincipal')
@@ -22,7 +24,7 @@ const listaTrastos = document.querySelector('#listaTrastos')
 
 
 
-let usuario = null
+
 let socket = null
 let arregloLugares = []
 
@@ -167,7 +169,7 @@ panelesCabecera.forEach(espacioCabecera => {
             }
         
             let mensajeConfirmacion = await ui.guardarDBLugar(lugarObj)
-            alert(mensajeConfirmacion.el_backend_dice_esto[0])
+            //alert(mensajeConfirmacion.el_backend_dice_esto[0])
             init()
         })
 
@@ -199,7 +201,6 @@ panelesCabecera.forEach(espacioCabecera => {
             
             let confirmacionDelete = confirm(`Seguro que desea borrar`);
             if(!confirmacionDelete){return}
-            console.log(e.target.id)
             let idTrasto = {
                 id: e.target.id
             }
@@ -218,7 +219,7 @@ const btnEliminarLugar = document.getElementsByName('btnEliminarLugar')
             
             let confirmacionDelete = confirm(`Seguro que desea borrar`);
             if(!confirmacionDelete){return}
-            console.log(e.target.id)
+            
             let idLugar = {
                 id: e.target.id
             }
@@ -268,7 +269,6 @@ let lugarObj = {nombre: nombreLugar, estado: "true"}
 
 //?------  GRABAR NUEVO LUGAR Y EL BACKEND NOS DEVUELVE RESPUESTA DE CONFIRMACION ---------
 let mensajeConfirmacion = await ui.guardarDBLugar(lugarObj)
-console.log(mensajeConfirmacion)
 
 init()
 
@@ -276,30 +276,5 @@ init()
 })
 
 
-const validarJWT = async ()=>{
 
-var url = (window.location.hostname.includes('localhost') )
-    ? 'http://localhost:8080/api/auth/'
-    : 'https://mitrasteroapp-production.up.railway.app/api/auth/'
-
-const token = localStorage.getItem('token') || ""
-
-if(token.length < 10){
-    window.location = "index.html"
-    console.log("TOKEN VACIO")
-    throw new Error("El token no es valido")
-
-}
-const resp = await fetch (url, {
-    headers:{"x-token": token}
-}
-
-)
-const {usuario: userDB, token: tokenDB} = await resp.json()
-
-localStorage.setItem('token', tokenDB)
-
-usuario = userDB
-
-}
 

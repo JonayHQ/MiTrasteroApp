@@ -4,6 +4,7 @@ import { Modelo } from "../models/usuarios.js"
 import { body } from "express-validator"
 import { ModelLugar } from "../models/0lugar.js"
 import { UI } from "../models/0UI.js" 
+import { ModelTrasto } from "../models/0trasto.js"
 
 export{crearLugar, obtenerLugares,eliminarLugar, editarLugar}
 
@@ -56,26 +57,55 @@ const obtenerLugares = async (req, res=response)=>{
         
         
         }
-        //! MODIFICAR PARA QUE SE BORRE EL CONTENIDO
+
+        
 const eliminarLugar = async (req, res=response)=>{
     //borrar todos los trastos guardados del lugar.
     //pedir la coleccion de lugar los trastos que guarda
     const lugarArr =  await ModelLugar.find({estado:true}) 
-     
-lugarArr.forEach(lugar => {
-    //?VACIA DE OBJETOS LOS SUBLUGARES
-    if(req.body.id===lugar.lugarDondeEsta){
-        lugar.objetosQueGuarda.forEach( async trastoID => {
-            let arrayTrastosVacio = ["vacio"]
-                await ModelLugar.findByIdAndUpdate(lugar.id, {objetosQueGuarda:arrayTrastosVacio})
-                //?ELimina el sublugar
-                await ModelLugar.findByIdAndDelete(lugar.id)
+    const trastosArr =  await ModelLugar.find({estado:true}) 
+    const datosLugarEliminado = await ModelLugar.findById(req.body.id)
+
+    console.log(req.body, "req.body")
+
+if(datosLugarEliminado.lugarDondeEsta==="general"){
+    lugarArr.forEach(async lugar => {
+        //?Busca lugares hijos
+        if(req.body.id===lugar.lugarDondeEsta){
+            //?VACIA DE OBJETOS LOS SUBLUGARES   
+            lugar.objetosQueGuarda.forEach( async trastoID => {
+                if(trastoID!=="vacio"){
+                    await ModelTrasto.findByIdAndDelete(trastoID)
+                    //await ModelLugar.findByIdAndUpdate(lugar.id, {objetosQueGuarda:arrayTrastosVacio})
+                }      
             })
-    }
-})
-    const lugarElminado = await ModelLugar.findByIdAndDelete(req.body.id)
+            //?ELimina el sublugar
+            await ModelLugar.findByIdAndDelete(lugar.id)
+        }
+    })
+}else{ //Eliminar sublugar directamente
+    lugarArr.forEach(async lugar => {
+        //?Busca lugares hijos
+        if(req.body.id===lugar.id){
+            //?VACIA DE OBJETOS del LUGAR
+            lugar.objetosQueGuarda.forEach( async trastoID => {
+                if(trastoID!=="vacio"){
+                    await ModelTrasto.findByIdAndDelete(trastoID)
+                    //await ModelLugar.findByIdAndUpdate(lugar.id, {objetosQueGuarda:arrayTrastosVacio})
+                }
+            })
+        }
+    })
+}
+
+//?Elimina el lugar seleccionado
+const lugarElminado = await ModelLugar.findByIdAndDelete(req.body.id)
+
     res.json({msg:`El lugar ha sido borrado`})
     }
+
+
+
 
 const editarLugar = async (req, res=response)=>{
     console.log(req.body)

@@ -466,6 +466,8 @@ return  respuesta
 
   let objetoBuscado = {nombre: "", id: ""}
   let lugardelObjetoBuscado = ""
+  let idlugarPadre = ""
+  let nombreLugarPadre = ""
   const p = document.querySelectorAll('.parrafoListaTrastos')
   p.forEach(parrafo => {
       parrafo.addEventListener('click', e=>{
@@ -475,10 +477,22 @@ return  respuesta
               objetosQueGuarda.forEach(trastoGuardado => {
                       if(trastoGuardado===objetoBuscado.id){
                           lugardelObjetoBuscado = lugar.nombreLugar
+                          idlugarPadre = lugar.lugarDondeEsta
                       }
                   });
+                  
+             
           });
-          divResultadoSearch.innerHTML = `El trasto <span style="font-weight:bolder">${objetoBuscado.nombre}</span> se encuentra en ${lugardelObjetoBuscado}`
+
+          arregloLugares.forEach(lugar => {
+            if(idlugarPadre===lugar._id){
+              nombreLugarPadre = lugar.nombreLugar
+              console.log(nombreLugarPadre)
+            }     
+          });
+
+
+          divResultadoSearch.innerHTML = `El trasto <span style="font-weight:bolder">${objetoBuscado.nombre}</span> se encuentra en ${lugardelObjetoBuscado} en ${nombreLugarPadre}`
           divResultadoSearch.innerHTML += `<a id="btnIr" class="btnIr">Ir al lugar</a>`
          
   }); 
