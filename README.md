@@ -16,7 +16,7 @@ Respecto al backend, el punto de partida se encuentra en el archivo models/serve
 así como gestionar las distintas peticiones http(get,post,put,delete) para las distintas rutas.
 
 El paso dos del backend pasa por la carpeta "/routes", donde se invocan distintas funciones en base al tipo de petición y la ruta desde la que se solicita la petición.
-En este punto se añaden los middlewares que me permite controlar peticiones incompletas o erróneas o no autorizadas.
+En este punto se añaden los middlewares que me permite controlar peticiones incompletas, erróneas o no autorizadas.
 
 El último paso estaría en la carpeta "/controllers" donde se gestiona la información recibida en la petición para posteriormente dar una respuesta desde el backend al frontend.
 
