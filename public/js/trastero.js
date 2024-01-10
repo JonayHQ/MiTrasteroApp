@@ -37,7 +37,6 @@ const init = async () => {
     //!AQUI METER UN PROMISE ALL, para ir mas rapido
     const arregloLugares =  await ui.obtenerEspacios()
     const arregloTrastos =  await ui.obtenerTrastos()
-console.log(arregloTrastos)
 
 
 //?CREAR MODAL DEL BUSCADOR
@@ -60,6 +59,8 @@ let cargarBuscador = ui.cargarBuscador(arregloTrastos, arregloLugares)
 
 let objetoBuscado = {nombre: "", id: ""}
 let lugardelObjetoBuscado = ""
+let idlugarPadre = ""
+let nombreLugarPadre = ""
 
 inputSearch.addEventListener('input', (e)=>{
     listaTrastos.innerHTML= ""
@@ -82,10 +83,19 @@ inputSearch.addEventListener('input', (e)=>{
                     objetosQueGuarda.forEach(trastoGuardado => {
                             if(trastoGuardado===objetoBuscado.id){
                                 lugardelObjetoBuscado = lugar.nombreLugar
+                                idlugarPadre = lugar.lugarDondeEsta
                             }
                         });
                 });
-                divResultadoSearch.innerHTML = `El trasto <span style="font-weight:bolder">${objetoBuscado.nombre}</span> se encuentra en ${lugardelObjetoBuscado}`
+
+                arregloLugares.forEach(lugar => {
+                    if(idlugarPadre===lugar._id){
+                      nombreLugarPadre = lugar.nombreLugar
+                      console.log(nombreLugarPadre)
+                    }     
+                  });
+
+                divResultadoSearch.innerHTML = `El trasto <span style="font-weight:bolder">${objetoBuscado.nombre}</span> se encuentra en ${lugardelObjetoBuscado} en ${nombreLugarPadre}`
         });
         
 

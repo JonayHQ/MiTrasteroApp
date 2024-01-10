@@ -9,7 +9,7 @@ const archivos = [
     "/js/UI.js",
     "/js/style.css"
 ]
-const nombreCache = 'MiTrastero_0.1.5'
+const nombreCache = 'MiTrastero_0.1.6'
 
 // Instalar SW, solo se instala una vez
 self.addEventListener('install', e=>{
